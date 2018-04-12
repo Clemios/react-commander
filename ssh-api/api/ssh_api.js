@@ -5,12 +5,23 @@ var app = express();
 var ssh = require('../models/ssh');
 
 // API Routes
-app.post('/test', async function (req, res) {
+app.post('/uptime', async function (req, res) {
 	var data = req.body;
-	console.log('TEST')
+	console.log('Get Uptime')
 	try {
-		const rows = await ssh.uptime(data)
-		res.send(JSON.stringify(rows));
+		const result = await ssh.uptime()
+		res.send(result);
+	} catch (err) {
+		console.log(err);
+	}
+});
+
+app.post('/minecraft', async function (req, res) {
+	var cmd = req.body.cmd;
+	console.log('Send a command to Mineraft server :', cmd)
+	try {
+		const result = await ssh.minecraftCommand(cmd)
+		res.send(result);
 	} catch (err) {
 		console.log(err);
 	}

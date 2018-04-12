@@ -6,7 +6,10 @@ class Controlus extends Component {
 
     render() {
         return (
-            <Button onClick={() => this.test()}>Click Here</Button>
+            <div>
+            <Button onClick={() => this.props.getUptime()}>UpTime</Button>
+            <Button onClick={() => this.props.minecraftCmd()}>Test</Button>
+            </div>
         );
     }
 }

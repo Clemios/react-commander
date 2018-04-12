@@ -6,22 +6,28 @@ const config = require('../config.json');
 
 function execCommand(command) {
 	return new Promise((resolve, reject) => {
-		global.ssh.execCommand(command, {
-			onStdout(chunk) {
-				console.log('stdoutChunk', chunk.toString('utf8'))
-				resolve(chunk.toString('utf8'))
-			},
-			onStderr(chunk) {
-				console.log('stderrChunk', chunk.toString('utf8'))
-				reject(chunk.toString('utf8'))
-			},
-		})
+		global.ssh.execCommand(command).then(function(result) {
+		if (result.stdout) {
+		console.log('STDOUT: ' + result.stdout)
+		resolve(result.stdout)
+		}
+		if (result.stderr) {
+			console.log('STDERR: ' + result.stderr)
+			resolve(result.stderr)
+		}
+  })
 	})
 }
 
 async function uptime() {
 	await instanciate();
 	return execCommand('uptime')
+}
+
+async function minecraftCommand(cmd) {
+	await instanciate();
+	var fullCmd = '/etc/init.d/minecraft ' + cmd;
+	return execCommand(fullCmd)
 }
 
 async function instanciate() {
@@ -32,6 +38,5 @@ async function instanciate() {
 
 module.exports = {
 	uptime,
-	instanciate,
-	execCommand
+	minecraftCommand
 }

@@ -16,9 +16,19 @@ class Requettus extends Component {
         })
     }
 
-    test = () => {
-        return axios.post('http://localhost:' + '7777' + '/test')
+    getUptime = () => {
+        return axios.post('http://localhost:' + '7777' + '/uptime')
             .then(response => console.log(response))
+            .catch(function (error) {
+                console.log(error);
+            });
+    }
+
+    minecraftCmd = () => {
+        return axios.post('http://localhost:' + '7777' + '/minecraft', {
+            cmd: 'restart'
+        })
+            .then(response => console.log(response.data))
             .catch(function (error) {
                 console.log(error);
             });
@@ -30,7 +40,7 @@ class Requettus extends Component {
             <Grid.Row>
             <Grid.Column width={6}>
             <Segment>
-                <Controlus />
+            <Controlus getUptime={() => this.getUptime()} minecraftCmd={() => this.minecraftCmd()}/>
             </Segment>
             </Grid.Column>
             <Grid.Column>
