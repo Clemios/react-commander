@@ -1,5 +1,6 @@
 import React, { Component } from 'react'
-import { Segment, Button } from 'semantic-ui-react'
+import { Segment, Button, Grid } from 'semantic-ui-react'
+import Controlus from './components/Controlus'
 import axios from 'axios'
 
 class Requettus extends Component {
@@ -24,9 +25,20 @@ class Requettus extends Component {
 
     render() {
         return (
+            <Grid columns='equal'>
+            <Grid.Row>
+            <Grid.Column width={6}>
             <Segment>
-                <Button onClick={() => this.test()}>Click Here</Button>
+                <Controlus />
             </Segment>
+            </Grid.Column>
+            <Grid.Column>
+            <Segment>
+
+            </Segment>
+            </Grid.Column>
+            </Grid.Row>
+            </Grid>
         );
     }
 }
