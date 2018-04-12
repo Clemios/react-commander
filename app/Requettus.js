@@ -1,6 +1,7 @@
 import React, { Component } from 'react'
 import { Segment, Button, Grid } from 'semantic-ui-react'
 import Controlus from './components/Controlus'
+import Mapus from './components/Mapus'
 import axios from 'axios'
 
 class Requettus extends Component {
@@ -34,7 +35,7 @@ class Requettus extends Component {
             </Grid.Column>
             <Grid.Column>
             <Segment>
-
+                <Mapus />
             </Segment>
             </Grid.Column>
             </Grid.Row>
