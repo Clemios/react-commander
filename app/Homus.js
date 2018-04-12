@@ -3,6 +3,8 @@ import Componentus from './Componentus'
 import Buttonus from './Buttonus'
 import Clockus from './Clockus'
 
+import { Segment } from 'semantic-ui-react'
+
 class Homus extends Component {
 
     state = {
@@ -24,19 +26,19 @@ class Homus extends Component {
 
     render() {
         return (
-            <div>
+            <Segment>
                 <p className="App-intro" style={{ color: this.state.color }}>
                     The button control my color.
-        </p>
+                </p>
                 <p className="App-intro" style={{ color: this.state.text }}>
                     The input control my color.
-        </p>
+                </p>
                 <Componentus changeColor={this.changeColor} setColor={this.setColor} text={this.state.text} color={this.state.color} />
                 <br />
                 <Buttonus>{this.state.label}</Buttonus>
                 <br />
                 <Clockus color={this.state.text} />
-            </div>
+            </Segment>
         );
     }
 }

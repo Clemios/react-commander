@@ -1,5 +1,6 @@
 .App {
   text-align: center;
+  min-height: 800px;
 }
 
 .App-logo {
@@ -22,7 +23,19 @@
   font-size: large;
 }
 
+.pushable {
+  min-height: 800px;
+}
+
+.pusher{
+  padding: 1em;
+}
+
 @keyframes App-logo-spin {
   from { transform: rotate(0deg); }
   to { transform: rotate(360deg); }
+}
+
+.ui.left.visible.vertical.menu ~ .pusher {
+  transform: translate3d(86px, 0, 0)
 }
